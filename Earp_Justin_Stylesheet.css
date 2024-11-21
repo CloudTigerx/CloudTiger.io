@@ -1,0 +1,196 @@
+/* General Body Styles */
+body {
+    font-family: "Verdana", "Times New Roman", Serif;
+    margin: 25px 50px;
+    background-color: #e6f1fc; /* Light cloud blue */
+    color: #333333; /* Dark gray for better readability */
+    line-height: 1.6; /* Improve text readability */
+}
+
+/* Heading Styles */
+h1 {
+    text-align: center;
+    background-color: #0b2452; /* Deep blue to match CloudTiger logo */
+    color: #ffffff; /* White for contrast */
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    font-size: 36px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+h2, h3, h4 {
+    color: #0b2452; /* Deep blue */
+    font-size: 28px;
+    margin: 20px 0 10px;
+    font-weight: bold;
+}
+
+h6 {
+    font-size: 12px;
+    text-align: center;
+    color: #666666; /* Muted gray */
+}
+
+/* Paragraph Styles */
+p {
+    border: 1px solid #cce7ff; /* Light blue border */
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+    background-color: #f9f9f9; /* Subtle background for contrast */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+    color: #333333;
+}
+
+/* Link Styles */
+a {
+    color: #007bb5; /* Bright blue for links */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #005f8a; /* Slightly darker blue on hover */
+    text-decoration: underline;
+}
+
+/* Navigation Menu */
+ul.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #007bb5; /* Bright blue for header */
+}
+
+li.menu {
+    float: left;
+    border-right: 1px solid #bbb;
+}
+
+li.menu:last-child {
+    border-right: none;
+}
+
+li.menu a {
+    display: block;
+    color: #ffffff; /* White text for contrast */
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+li.menu a:hover {
+    background-color: #005f8a; /* Darker blue on hover */
+}
+
+.active {
+    background-color: #0b2452; /* Deep blue for active item */
+}
+
+/* Form Styles */
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #ffffff; /* Clean white background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #0b2452; /* Deep blue for labels */
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: #007bb5; /* Button matches brand blue */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #005f8a; /* Darker blue on hover */
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+th {
+    background-color: #007bb5; /* Bright blue header */
+    color: white;
+    padding: 12px;
+    text-align: left;
+    border: 2px solid #0b2452; /* Match deep blue */
+}
+
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    color: #333333;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f9ff; /* Subtle blue for alternating rows */
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #ffffff; /* White for contrast */
+}
+
+tbody tr:hover {
+    background-color: #e6f1fc; /* Light cloud blue on hover */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 600px) {
+    ul.menu {
+        display: flex;
+        flex-direction: column;
+    }
+    li.menu {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #bbb;
+    }
+    li.menu:last-child {
+        border-bottom: none;
+    }
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+    td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        white-space: nowrap;
+    }
+}
