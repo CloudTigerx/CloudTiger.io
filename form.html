@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/form.css">
+  <style>
+    input:focus {
+      outline: none;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+    input.valid {
+      border-color: green;
+    }
+    input.invalid {
+      border-color: red;
+    }
+    .error-message {
+      margin-top: 5px;
+      color: red;
+      font-size: 0.8em;
+    }
+  </style>
+  <title>CompTIA A+ Survey</title>
+</head>
+<body>
+  <div class="sidebar">
+    <a href="home.html">Home</a>
+    <a href="motherboards_processors_memory.html">Motherboards Processors and Memory</a>
+    <a href="motherboards_processors_memory_quiz.html">Motherboards Processors and Memory Quiz</a>
+    <a href="storage.html">Storage Devices and Power Supplies</a>
+    <a href="storagequiz.html">Storage Devices and Power Supplies Quiz</a>
+    <a href="EarpJustinAssignment1.html">Sign Up/In</a>
+    <a class="active" href="form.html">Survey</a>
+	<a href="break.html">Take A Break</a>
+  </div>
+  <div class="container">
+    <h2>CompTIA A+ Survey</h2>
+    <form action="#" method="post">
+      <label for="color">What color do you associate most with cybersecurity alerts?</label>
+      <input type="color" id="color" name="color" onchange="displayColor()">
+      <div id="colorDisplay" style="width: 50px; height: 50px; border: 1px solid #000; margin-top: 10px;"></div>
+
+      <label for="date">When did you start studying for the CompTIA A+ certification?</label>
+      <input type="date" id="date" name="date" required>
+
+      <label for="datetime">When was the last time you troubleshot a computer issue?</label>
+      <input type="datetime-local" id="datetime" name="datetime" required>
+
+      <label for="email">Enter your email to receive IT security updates:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="month">Which month do you plan to take your CompTIA A+ exam?</label>
+      <input type="month" id="month" name="month" required>
+
+      <label for="number">How many computers or devices do you currently own?</label>
+      <input type="number" id="number" name="number" min="1" max="100" required>
+
+      <label for="range">Rate your confidence in troubleshooting hardware issues (1-100):</label>
+      <input type="range" id="range" name="range" min="1" max="100" value="50">
+
+      <label for="search">Search for an IT topic you want to learn more about:</label>
+      <input type="search" id="search" name="search" required>
+
+      <label for="tel">Enter a support hotline number you'd call for tech issues:</label>
+      <input type="tel" id="tel" name="tel" pattern="^\+?[0-9]{10,15}$" title="Please enter a valid phone number (e.g., +1234567890)" required>
+
+      <label for="time">What time of day do you usually study for IT certifications?</label>
+      <input type="time" id="time" name="time" required>
+
+      <label for="url">Share a helpful IT-related website you use for studying:</label>
+      <input type="url" id="url" name="url" required>
+
+      <label for="week">Which week do you plan to finish your CompTIA A+ study materials?</label>
+      <input type="week" id="week" name="week" required>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script src="js/validation.js"></script>
+  <script>
+    function displayColor() {
+      const colorInput = document.getElementById("color");
+      const colorDisplay = document.getElementById("colorDisplay");
+      colorDisplay.style.backgroundColor = colorInput.value;
+    }
+  </script>
+</body>
+</html>

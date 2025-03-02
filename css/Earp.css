@@ -1,0 +1,354 @@
+body {
+  font-family: Times New Roman, sans-serif;
+  background-color:#1D2951;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100vh;
+  box-sizing: border-box;
+  margin-top: 150px;
+  color: white;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #333;
+  position: fixed; 
+  height: 100%;
+  overflow: auto;
+  left: 0; 
+  top: 0;
+  padding-top: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); 
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 18px 24px;
+  text-decoration: none;
+  font-size: 18px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Active link */
+.sidebar a.active {
+  background-color: #ff7800;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+/* Hover effect for non-active links */
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+  border-radius: 5px;
+}
+
+/* Additional effects for the sidebar items */
+.sidebar a:active {
+  background-color: #ff5500;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+#flashcard {
+  font-family: Arial, sans-serif;
+  max-width: 400px;
+  margin-left: 220px;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  color: black;
+}
+
+#flashcard-question {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.flashcard-options {
+  margin-top: 10px;
+}
+
+.flashcard-options label {
+  display: block;
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.flashcard-options input[type="radio"] {
+  margin-right: 10px;
+}
+#xp-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#xp-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+#xp-progress {
+  height: 100%;
+  background-color: #4caf50;
+  width: 0%;
+  transition: width 0.5s ease-in-out;
+  border-radius: 10px;
+}
+
+#level, #current-xp {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+#feedback {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ff4500;
+}
+
+#next-question-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#next-question-btn:hover {
+  background-color: #005f6a;
+}
+
+#submit-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#submit-btn:disabled {
+  background-color: #c8e6c9;
+  cursor: not-allowed;
+}
+
+#explanation {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #e9f5e9;
+  border: 1px solid #d3e9d3;
+  border-radius: 5px;
+}
+
+#feedback {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#feedback.correct {
+  color: green;
+}
+
+#feedback.incorrect {
+  color: red;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #45a049;
+}
+
+button#next-question-btn {
+  background-color: #2196F3;
+}
+
+button#next-question-btn:hover {
+  background-color: #0b7dda;
+}
+
+.reasoning {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  display: none;
+}
+
+.next-question {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: none;
+}
+
+.next-question:hover {
+  background-color: #45a049;
+}
+
+.container { 
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: flex-start;
+}
+
+.textbox1,
+.textbox2,
+.textbox3,
+.textbox4,
+.textbox5,
+.textbox6,
+.textbox7,
+.textbox8,
+.textbox9,
+.textbox10,
+.textbox11,
+.textbox12,
+.textbox13,
+.textbox14,
+.textbox15,
+.textbox16,
+.textbox17,
+.textbox18 {
+  width: 100%; 
+  max-width: 622px; 
+  height: auto;
+  padding: 20px;
+  background: #333;
+  font-size: 16px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  border: 5px solid #ff7800;
+  color: white;
+  transition: all 0.3s ease-in-out;
+  border-radius: 10px;
+  background-color: #222;
+  margin: 10px;
+  margin-left: 400px;
+}
+
+.textbox1:hover,
+.textbox2:hover,
+.textbox3:hover,
+.textbox4:hover,
+.textbox5:hover,
+.textbox6:hover,
+.textbox7:hover,
+.textbox8:hover,
+.textbox9:hover,
+.textbox10:hover,
+.textbox11:hover,
+.textbox12:hover,
+.textbox13:hover,
+.textbox14:hover,
+.textbox15:hover,
+.textbox16:hover,
+.textbox17:hover,
+.textbox18:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+
+.textbox17,
+.textbox18 {
+  width: 100%; 
+}
+
+@media (max-width: 768px) {
+  .textbox1,
+  .textbox2,
+  .textbox3,
+  .textbox4,
+  .textbox5,
+  .textbox6,
+  .textbox7,
+  .textbox8,
+  .textbox9,
+  .textbox10,
+  .textbox11,
+  .textbox12,
+  .textbox13,
+  .textbox14,
+  .textbox15,
+  .textbox16,
+  .textbox17,
+  .textbox18 {
+    width: 90%;
+    margin: 10px 0;
+  }
+
+  .hover-image {
+    width: 70px;
+  }
+}
+.sdbox {
+  margin-left: 300px;
+  margin-right: 100px;
+  flex: 1 1 30%;
+  min-width: 200px;
+  position: relative;
+  background: #222;
+  border: 5px solid #ff7800; 
+  padding: 40px 30px 30px 30px; 
+  box-sizing: border-box;
+  border-radius: 8px; 
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 8px, 
+              rgba(0, 0, 0, 0.1) 0px 2px 12px, 
+              rgba(0, 0, 0, 0.05) 0px 0px 8px; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sdbox:hover {
+  transform: translateY(-5px);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 16px, 
+              rgba(0, 0, 0, 0.15) 0px 4px 10px, 
+              rgba(0, 0, 0, 0.1) 0px 2px 6px; 
+}
+
+h1, h2, h3 {
+    text-shadow: 0 0 5px cyan, 0 0 10px rgba(0, 255, 255, 0.7), 0 0 15px rgba(0, 255, 255, 0.5);
+    color: white;
+}
+
+
+

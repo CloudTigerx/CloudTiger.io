@@ -1,0 +1,181 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #1D2951;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  box-sizing: border-box;
+  color: white;
+  margin-top: 200px;
+  font-size: 16px;
+}
+/* Ensure the sidebar has a higher stacking context */
+.sidebar {
+  position: relative; /* or fixed, depending on your layout */
+  z-index: 10; /* Set a higher value to keep it above other content */
+}
+
+#main-content { /* Or any other content container */
+  position: relative;
+  z-index: 1; /* Ensure the content has a lower value than the sidebar */
+}
+
+
+/* Sidebar Styling */
+.sidebar {
+  width: 250px;
+  background-color: #333;
+  position: fixed; /* Keeps the sidebar fixed while scrolling */
+  height: 100%;
+  overflow: auto;
+  left: 0; /* Ensure the sidebar sticks to the left */
+  top: 0;
+  padding-top: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Adding subtle shadow for depth */
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 18px 24px;
+  text-decoration: none;
+  font-size: 18px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Active link */
+.sidebar a.active {
+  background-color: #41007a;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+/* Hover effect for non-active links */
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+  border-radius: 5px;
+}
+
+/* Additional effects for the sidebar items */
+.sidebar a:active {
+  background-color: #ff5500;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Draggable options */
+.draggable {
+  width: fit-content;
+  padding: 12px 25px;
+  background-color: #41007a;
+  color: white;
+  border-radius: 10px;
+  cursor: grab;
+  font-weight: bold;
+  user-select: none;
+  margin: 10px;
+  display: inline-block;
+  text-align: center;
+  font-size: 18px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, opacity 0.2s ease;
+}
+
+.draggable:hover {
+  background-color: #ff9933;
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+.draggable:active {
+  cursor: grabbing;
+  background-color: #ff5500;
+  transform: scale(1.02);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  opacity: 0.9;
+}
+
+/* Drop box */
+.dropbox {
+  width: 300px;
+  height: 150px;
+  border: 3px dashed #41007a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-size: 18px;
+  color: #555;
+  font-weight: bold;
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.dropbox:hover {
+  background-color: #e6e6e6;
+  border-color: #ff9933;
+  transform: scale(1.02);
+}
+
+.dropbox p {
+  font-size: 20px;
+  color: #666;
+  font-weight: normal;
+  text-align: center;
+}
+
+/* Question box */
+.questionbox1 {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  width: 750px;
+  background: #f8f8f8;
+  border: 5px solid #41007a;
+  padding: 40px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 20px, rgba(0, 0, 0, 0.15) 0px 10px 15px;
+  position: relative;
+  align-self: center;
+  margin-top: 100px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #f9f9f9, #e3e3e3);
+}
+
+.questionbox1 p {
+  font-size: 24px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* For added smoothness and animation */
+@keyframes popin {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.questionbox1 {
+  animation: popin 0.5s ease-out;
+}
+
+

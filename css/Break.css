@@ -1,0 +1,383 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100vh;
+  box-sizing: border-box;
+  margin-top: 0;
+  margin-left: 250px; /* Space for sidebar */
+}
+
+/* Sidebar Navigation */
+.sidebar {
+  width: 250px;
+  background-color: #333;
+  position: fixed; 
+  height: 100%;
+  overflow: auto;
+  left: 0; 
+  top: 0;
+  padding-top: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 18px 24px;
+  text-decoration: none;
+  font-size: 17px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar a.active {
+  background-color: #ff7800;
+  color: white;
+  font-weight: bold;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+.sidebar a:active {
+  background-color: #ff5500;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Top Navigation Bar - Not used but kept for reference */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: none; /* Hide this navigation */
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  transition: background-color 0.3s;
+}
+
+.topnav a:hover {
+  background-color: #555;
+}
+
+.topnav a.active {
+  background-color: #ff7800;
+  color: white;
+}
+
+/* Drag Racing Simulator Styles */
+.drag-racing {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 1200px;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.drag-racing h2 {
+  color: #ff7800;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.drag-racing p {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #cccccc;
+}
+
+/* Simulator Container - Holds Canvas and Controls Side by Side */
+.simulator-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: flex-start;
+  margin-top: 30px;
+  width: 100%;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Canvas Container */
+.canvas-container {
+  flex: 2;
+  background-color: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(255, 120, 0, 0.2);
+  min-height: 1000px;
+  min-width: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Controls Container */
+.controls-container {
+  flex: 1;
+  padding: 20px;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(255, 120, 0, 0.2);
+  max-width: 300px;
+  box-sizing: border-box;
+}
+
+/* Control Group */
+.control-group {
+  margin-bottom: 20px;
+}
+
+.control-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Input Styling */
+input[type="number"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #333;
+  border: 2px solid #ff7800;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 120, 0, 0.1);
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+input[type="number"]:focus {
+  outline: none;
+  border-color: #ff9d45;
+  box-shadow: 0 0 15px rgba(255, 120, 0, 0.3);
+}
+
+/* Remove spinner buttons from number input */
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Race Stats */
+.race-stats {
+  margin-top: 30px;
+  background-color: #333;
+  border-radius: 6px;
+  padding: 15px;
+  border: 2px solid #ff7800;
+  box-shadow: 0 0 10px rgba(255, 120, 0, 0.1);
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #444;
+}
+
+.stat-item:last-child {
+  border-bottom: none;
+}
+
+.stat-label {
+  font-weight: bold;
+  color: #ddd;
+  font-size: 16px;
+}
+
+.stat-value {
+  color: #ff7800;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: right;
+}
+
+/* Button Styles */
+.primary-btn {
+  background-color: #ff7800;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 15px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 10px 0;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.primary-btn:hover {
+  background-color: #ff9d45;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.primary-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.primary-btn.faded {
+  background-color: #995c2c;
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.primary-btn.faded:hover {
+  background-color: #995c2c;
+  transform: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  body {
+    margin-left: 0;
+    margin-top: 0;
+  }
+  
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding-top: 0;
+  }
+  
+  .sidebar a {
+    float: left;
+    padding: 15px;
+  }
+  
+  .drag-racing {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .simulator-container {
+    flex-direction: column;
+  }
+  
+  .controls-container {
+    width: 100%;
+  }
+  
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+
+/* Mobile styles */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    padding: 10px;
+  }
+  
+  .content {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .canvas-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .controls-container {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .primary-btn {
+    font-size: 16px;
+    padding: 12px 20px;
+    margin: 5px 0;
+    width: 100%;
+  }
+  
+  #launchSideBtn {
+    font-size: 20px;
+    padding: 15px 0;
+    width: 100%;
+  }
+  
+  .control-group {
+    margin-bottom: 10px;
+  }
+  
+  .control-group input {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .results-container {
+    padding: 10px;
+  }
+  
+  .results-item {
+    margin: 5px 0;
+  }
+}
+
+body.mobile .primary-btn {
+  min-height: 50px;
+  font-size: 18px;
+}
+
+body.mobile #launchSideBtn {
+  min-height: 80px;
+  font-size: 24px;
+}

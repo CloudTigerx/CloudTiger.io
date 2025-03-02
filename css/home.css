@@ -1,0 +1,141 @@
+body {
+  font-family: Times New Roman, sans-serif;
+  background-color:#1D2951;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100vh;
+  box-sizing: border-box;
+  margin-top: 150px;
+  color: white;
+  margin-left: 200px;
+}
+/* Sidebar Styling */
+.sidebar {
+  width: 250px;
+  background-color: #333;
+  position: fixed; /* Keeps the sidebar fixed while scrolling */
+  height: 100%;
+  overflow: auto;
+  left: 0; /* Ensure the sidebar sticks to the left */
+  top: 0;
+  padding-top: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Adding subtle shadow for depth */
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 18px 24px;
+  text-decoration: none;
+  font-size: 18px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Active link */
+.sidebar a.active {
+  background-color: #ff7800;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+/* Hover effect for non-active links */
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+  border-radius: 5px;
+}
+
+/* Additional effects for the sidebar items */
+.sidebar a:active {
+  background-color: #ff5500;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.lesson {
+  margin: 20px auto;
+  padding: 15px;
+  width: auto;
+  height: auto;
+  background: linear-gradient(to right, #f06, #ff7f50); /* Soft gradient from pink to orange */
+  background-size: 200% 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 255, 255, 0.3);
+  transition: transform 0.3s ease, background-position 0.5s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 600px; /* Limit the width for better control */
+}
+
+.lesson:hover {
+  transform: scale(1.03); /* Slightly smaller scale */
+  background-position: right center;
+  box-shadow: 0 6px 15px rgba(0, 255, 255, 0.5);
+  filter: brightness(1.05); /* Subtle brightness effect on hover */
+}
+
+.lesson h2 {
+  color: black;
+  margin: 0 0 12px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Darker text shadow for better readability */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Sleek font style */
+}
+
+.lesson ul {
+  list-style: none;
+  padding: 0;
+}
+
+.lesson ul li {
+  padding: 5px 0;
+  font-size: 14px; /* Slightly smaller font size */
+  color: #333; /* Slightly darker text for better readability */
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease, padding-left 0.3s ease;
+}
+
+.lesson ul li:hover {
+  color: #ff7f50; /* Orange hover color */
+  transform: translateX(8px); /* Slight shift to the right */
+  padding-left: 8px; /* Slight shift to left for added effect */
+}
+
+.lesson:hover::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  background: rgba(255, 255, 0, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: ripple 0.6s linear forwards;
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+.home1 .lesson {
+  top: 20px;
+  left: 220px;
+}
+
+.home2 .lesson {
+  top: 20px;
+  left: 900px;
+}
+

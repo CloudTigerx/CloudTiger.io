@@ -1,0 +1,187 @@
+body {
+  font-family: Times New Roman, sans-serif;
+  background-color:#1D2951;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  box-sizing: border-box;
+  margin-top: 150px;
+  color: white;
+}
+.heading {
+  width: 300px;
+  height: 100px;
+  padding: 20px;
+  background: red;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  color: black;
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-box {
+  width: 450px;
+  padding: 20px;
+  background: red;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.left-box input {
+  width: 90%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.left-box button {
+  width: 90%;
+  padding: 10px;
+  background: #4CAF50;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.4s;
+}
+
+.left-box button:hover {
+  background: #45a049;
+}
+
+.signin-box {
+  width: 300px;
+  padding: 20px;
+  background: red;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  color: black;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signin-box input {
+  width: 90%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.signin-box {
+  width: 300px;
+  padding: 20px;
+  background: red;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  color: black;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the content horizontally */
+  justify-content: center; /* Centers the content vertically if needed */
+}
+
+.signin-box button {
+  width: 90%; /* Button takes up 90% of the container width */
+  padding: 10px;
+  background: #4CAF50;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.4s;
+}
+
+
+.signin-box button:hover {
+  background: #45a049;
+}
+
+.enter {
+  width: 200px;
+  padding: 15px;
+  background: linear-gradient(135deg, #4CAF50, #66BB6A);
+  border: 2px solid #4CAF50;
+  border-radius: 30px;
+  font-size: 24px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.enter a {
+  text-decoration: none; /* Removes underline */
+  color: inherit; /* Inherits the text color from the parent */
+}
+
+.enter:hover {
+  background: linear-gradient(135deg, #66BB6A, #4CAF50); /* Slight hover effect */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Hover shadow effect */
+}
+
+.enter:active {
+  transform: scale(0.98); /* Slight scale on click */
+}
+
+.enter:hover {
+  background: linear-gradient(135deg, #66BB6A, #4CAF50);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+.enter:active {
+  background: #45a049;
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: red;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  position: absolute;
+  left: 5px;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  background-color: orange;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
