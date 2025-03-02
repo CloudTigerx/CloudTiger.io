@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/Game.css">
+    <title>Brick Combo Breaker</title>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="home.html">Home</a>
+        <a href="motherboards_processors_memory.html">Motherboards, Processors, and Memory</a>
+        <a href="motherboards_processors_memory_quiz.html">Motherboards, Processors, and Memory Quiz</a>
+        <a href="storage.html">Storage Devices and Power Supplies</a>
+        <a href="storagequiz.html">Storage Devices and Power Supplies Quiz</a>
+        <a href="form.html">Survey</a>
+        <a href="break.html">Take A Break</a>
+        <a class="active" href="GameNoModule.html">Take Another Break</a>
+    </div>
+    
+    <div class="content">
+        <div class="game-container">
+            <div class="game-header">
+                <h1>Brick Combo Breaker</h1>
+                <div class="score-container">
+                    <div class="score">Score: <span id="score">0</span></div>
+                </div>
+            </div>
+            
+            <div class="game-area">
+                <canvas id="gameCanvas" width="360" height="780"></canvas>
+                
+                <!-- Game Instructions -->
+                <div class="game-instructions">
+                    Desktop: Arrow keys to move/rotate, Spacebar for fast drop, P to pause
+                    <br>Mobile: Use D-pad to move/rotate, Round button for fast drop
+                </div>
+                
+                <!-- Mobile Controls -->
+                <div class="mobile-controls">
+                    <div class="dpad">
+                        <button class="dpad-button dpad-up">&#8593;</button>
+                        <button class="dpad-button dpad-left">&#8592;</button>
+                        <button class="dpad-button dpad-center"></button>
+                        <button class="dpad-button dpad-right">&#8594;</button>
+                        <button class="dpad-button dpad-down">&#8595;</button>
+                    </div>
+                    
+                    <button class="space-button">DROP</button>
+                </div>
+                
+                <div class="game-info">
+                    <!-- Game controls -->
+                    <div class="controls">
+                        <button id="startButton" class="game-btn">Reset Game</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Game scripts - without modules -->
+    <script src="js/constants-nomodule.js"></script>
+    <script src="js/piece-nomodule.js"></script>
+    <script src="js/renderer-nomodule.js"></script>
+    <script src="js/gravity-nomodule.js"></script>
+    <script src="js/breaker-nomodule.js"></script>
+    <script src="js/main-nomodule.js"></script>
+</body>
+</html>
