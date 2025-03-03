@@ -339,144 +339,117 @@ window.addEventListener('load', () => {
     startButton.addEventListener('click', handleStartButtonClick);
 });
 
-// Mobile D-pad Controls - Add this after your keyboard event handlers
+// Improved D-pad Controls
 document.addEventListener('DOMContentLoaded', function() {
-    // D-pad direction buttons
+    // Get D-pad elements
     const dpadLeft = document.getElementById('dpad-left');
     const dpadRight = document.getElementById('dpad-right');
     const dpadUp = document.getElementById('dpad-up');
     const dpadDown = document.getElementById('dpad-down');
     
-    // Action buttons
-    const btnSpace = document.getElementById('btn-space');
-    const btnPause = document.getElementById('btn-pause');
+    // Improved D-pad event handlers with better touch support
     
-    // Helper function to simulate keydown events
-    function simulateKeyEvent(keyCode) {
+    // Left button
+    dpadLeft.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        dpadLeft.classList.add('active');
+        
+        // Direct function call for movement
+        if (currentPiece && gameState === 'playing') {
+            if (typeof movePieceLeft === 'function') {
+                movePieceLeft(); // Use direct function if available
+            } else if (typeof movePiece === 'function') {
+                movePiece(currentPiece, gameBoard, 'left');
+            } else {
+                // Fallback to key simulation
+                simulateKey('ArrowLeft');
+            }
+        }
+    });
+    
+    // Right button
+    dpadRight.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        dpadRight.classList.add('active');
+        
+        // Direct function call for movement
+        if (currentPiece && gameState === 'playing') {
+            if (typeof movePieceRight === 'function') {
+                movePieceRight(); // Use direct function if available
+            } else if (typeof movePiece === 'function') {
+                movePiece(currentPiece, gameBoard, 'right');
+            } else {
+                // Fallback to key simulation
+                simulateKey('ArrowRight');
+            }
+        }
+    });
+    
+    // Up button - for clockwise rotation
+    dpadUp.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        dpadUp.classList.add('active');
+        
+        // Direct function call for rotation
+        if (currentPiece && gameState === 'playing') {
+            if (typeof rotatePieceClockwise === 'function') {
+                rotatePieceClockwise(); // Use direct function if available
+            } else if (typeof rotatePiece === 'function') {
+                rotatePiece(currentPiece, gameBoard, 1); // Clockwise rotation
+            } else {
+                // Fallback to key simulation
+                simulateKey('ArrowUp');
+            }
+        }
+    });
+    
+    // Down button - for counterclockwise rotation
+    dpadDown.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        dpadDown.classList.add('active');
+        
+        // Direct function call for soft drop
+        if (currentPiece && gameState === 'playing') {
+            if (typeof rotatePieceCounterClockwise === 'function') {
+                rotatePieceCounterClockwise(); // Use direct function if available
+            } else if (typeof rotatePiece === 'function') {
+                rotatePiece(currentPiece, gameBoard, -1); // Counter-clockwise rotation
+            } else {
+                // Fallback to key simulation
+                simulateKey('ArrowDown');
+            }
+        }
+    });
+    
+    // Helper function to simulate keyboard events
+    function simulateKey(keyCode) {
         const event = new KeyboardEvent('keydown', {
             key: keyCode,
             code: keyCode,
-            keyCode: keyCode.charCodeAt(0),
-            which: keyCode.charCodeAt(0),
+            keyCode: keyCode === 'ArrowLeft' ? 37 : 
+                   keyCode === 'ArrowRight' ? 39 : 
+                   keyCode === 'ArrowUp' ? 38 : 
+                   keyCode === 'ArrowDown' ? 40 : 0,
+            which: keyCode === 'ArrowLeft' ? 37 : 
+                   keyCode === 'ArrowRight' ? 39 : 
+                   keyCode === 'ArrowUp' ? 38 : 
+                   keyCode === 'ArrowDown' ? 40 : 0,
             bubbles: true,
             cancelable: true
         });
         document.dispatchEvent(event);
     }
     
-    // Add touch/click events for mobile controls
-    
-    // D-pad button handlers
-    dpadLeft.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        dpadLeft.classList.add('active');
-        // Move piece left
-        if (currentPiece && gameState === 'playing') {
-            movePiece(currentPiece, gameBoard, 'left');
-        }
-    });
-    
-    dpadRight.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        dpadRight.classList.add('active');
-        // Move piece right
-        if (currentPiece && gameState === 'playing') {
-            movePiece(currentPiece, gameBoard, 'right');
-        }
-    });
-    
-    dpadUp.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        dpadUp.classList.add('active');
-        // Rotate clockwise
-        if (currentPiece && gameState === 'playing') {
-            rotatePiece(currentPiece, gameBoard, 1);
-        }
-    });
-    
-    dpadDown.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        dpadDown.classList.add('active');
-        // Rotate counter-clockwise
-        if (currentPiece && gameState === 'playing') {
-            rotatePiece(currentPiece, gameBoard, -1);
-        }
-    });
-    
-    // Action button handlers
-    btnSpace.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        btnSpace.classList.add('active');
-        // Fast drop
-        if (currentPiece && gameState === 'playing') {
-            hardDrop(currentPiece, gameBoard);
-        }
-    });
-    
-    btnPause.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        btnPause.classList.add('active');
-        // Toggle pause
-        togglePause();
-    });
-    
-    // Improved Start Game button in mobile controls
-    const btnStart = document.getElementById('btn-start');
-    
-    // Direct game start function for mobile
-    btnStart.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        btnStart.classList.add('active');
+    // Ensure buttons return to normal state after touch
+    [dpadLeft, dpadRight, dpadUp, dpadDown].forEach(button => {
+        button.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            button.classList.remove('active');
+        });
         
-        // Call startGame function directly if it exists
-        if (typeof startGame === 'function') {
-            startGame();
-        } else if (typeof initGame === 'function') {
-            initGame(); // Alternative function name that might be used
-        } else {
-            // Fallback to clicking the main button
-            const startButton = document.getElementById('startButton');
-            if (startButton) {
-                startButton.click();
-            }
-        }
-    });
-    
-    btnStart.addEventListener('touchend', function(e) {
-        e.preventDefault();
-        btnStart.classList.remove('active');
-    });
-    
-    // Add mouse events for desktop testing
-    btnStart.addEventListener('mousedown', function(e) {
-        e.preventDefault();
-        btnStart.classList.add('active');
-        
-        // Get the main start button and trigger its click
-        const startButton = document.getElementById('startButton');
-        if (startButton) {
-            startButton.click();
-        }
-    });
-    
-    btnStart.addEventListener('mouseup', function(e) {
-        e.preventDefault();
-        btnStart.classList.remove('active');
-    });
-    
-    // Include btnStart in the allButtons array
-    const allButtons = [dpadLeft, dpadRight, dpadUp, dpadDown, btnSpace, btnPause, btnStart];
-    
-    // Add toggle controls functionality
-    const toggleControlsBtn = document.getElementById('toggle-controls');
-    const mobileControls = document.querySelector('.mobile-controls');
-    
-    // Initialize controls as hidden on desktop
-    if (window.innerWidth > 768) {
-        mobileControls.classList.add('hide-controls');
-    }
-    
-    toggleControlsBtn.addEventListener('click', function() {
-        mobileControls.classList.toggle('hide-controls');
+        button.addEventListener('touchcancel', function(e) {
+            e.preventDefault();
+            button.classList.remove('active');
+        });
     });
 });
