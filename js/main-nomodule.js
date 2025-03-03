@@ -420,17 +420,25 @@ document.addEventListener('DOMContentLoaded', function() {
         togglePause();
     });
     
-    // Start Game button in mobile controls
+    // Improved Start Game button in mobile controls
     const btnStart = document.getElementById('btn-start');
     
+    // Direct game start function for mobile
     btnStart.addEventListener('touchstart', function(e) {
         e.preventDefault();
         btnStart.classList.add('active');
         
-        // Get the main start button and trigger its click
-        const startButton = document.getElementById('startButton');
-        if (startButton) {
-            startButton.click();
+        // Call startGame function directly if it exists
+        if (typeof startGame === 'function') {
+            startGame();
+        } else if (typeof initGame === 'function') {
+            initGame(); // Alternative function name that might be used
+        } else {
+            // Fallback to clicking the main button
+            const startButton = document.getElementById('startButton');
+            if (startButton) {
+                startButton.click();
+            }
         }
     });
     
