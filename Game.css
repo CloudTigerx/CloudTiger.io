@@ -480,21 +480,37 @@
             display: flex !important;
         }
         
-        /* Action buttons styling - enhanced for better UX */
+        /* Updated action buttons styling to include Start Game button */
         .action-buttons {
             display: flex;
             flex-direction: column;
             gap: 15px;
+            align-items: center;
         }
         
-        .action-buttons button {
-            padding: 10px 15px;
-            border-radius: 8px;
+        .small-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        #btn-start {
+            background-color: rgba(50, 180, 50, 0.9) !important; /* More vibrant green */
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            font-size: 18px;
+            border: 2px solid white !important; /* More visible border */
+            color: white !important; /* Ensure text is visible */
             font-weight: bold;
-            font-size: 16px;
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.5);
             transition: all 0.2s ease;
+        }
+        
+        #btn-start:active,
+        #btn-start.active {
+            background-color: rgba(30, 150, 30, 0.9);
+            transform: scale(0.95);
         }
         
         /* Special styling for the Drop button */
@@ -520,11 +536,12 @@
         
         /* Pause button styling */
         #btn-pause {
-            background-color: rgba(50, 100, 220, 0.8);
+            background-color: rgba(50, 100, 220, 0.9) !important; /* More vibrant blue */
             width: 60px;
             height: 60px;
             border-radius: 12px;
             font-size: 24px;
+            border: 2px solid white !important; /* More visible border */
         }
         
         #btn-pause:active,
@@ -539,5 +556,19 @@
             align-items: center;
             justify-content: space-around;
             padding: 20px 15px;
+        }
+        
+        /* Fix for mobile buttons appearing disabled */
+        #btn-start, #btn-pause {
+            opacity: 1 !important; /* Ensure buttons are not faded out */
+            pointer-events: auto !important; /* Ensure buttons are clickable */
+            color: white !important; /* Ensure text is visible */
+        }
+        
+        /* Ensure mobile controls are fully interactive */
+        .mobile-controls button {
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent; /* Remove tap highlight on iOS */
+            user-select: none; /* Prevent text selection */
         }
 		
