@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Game.css">
+    <title>CompTIA A+</title>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="home.html">Home</a>
+        <a href="motherboards_processors_memory.html">Motherboards, Processors, and Memory</a>
+        <a href="motherboards_processors_memory_quiz.html">Motherboards, Processors, and Memory Quiz</a>
+        <a href="storage.html">Storage Devices and Power Supplies</a>
+        <a href="storagequiz.html">Storage Devices and Power Supplies Quiz</a>
+        <a href="form.html">Survey</a>
+        <a href="break.html">Take A Break</a>
+        <a class="active" href="Game.html">Take Another Break</a>
+    </div>
+    
+    <div class="content">
+        <div class="game-container">
+            <div class="game-header">
+                <h1>Combos: Brick Breaker Enguage</h1>
+            </div>
+            <div class="game-area">
+                <canvas id="gameCanvas" width="360" height="780"></canvas>
+                
+                <div class="game-info">
+                    <!-- Player info -->
+                    <div class="info-panel">
+                        <h3>Player</h3>
+                        <p>Score: <span id="score">0</span></p>
+                        <canvas id="nextPieceCanvas" class="next-piece" width="120" height="120"></canvas>
+                    </div>
+                    
+                    <!-- Game controls -->
+                    <div class="controls">
+                        <button id="startButton" class="game-btn">Start Game</button>
+                    </div>
+                    
+                    <!-- Game instructions -->
+                    <div class="info-panel">
+                        <h3>Controls</h3>
+                        <ul>
+                            <li><strong>←/→</strong>: Move left/right</li>
+                            <li><strong>↑</strong>: Rotate clockwise</li>
+                            <li><strong>↓</strong>: Rotate counter-clockwise</li>
+                            <li><strong>Space</strong>: Fast drop</li>
+                            <li><strong>P</strong>: Pause</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile Controls - Remove pause button -->
+    <div class="mobile-controls">
+        <div class="dpad">
+            <button id="dpad-empty1"></button>
+            <button id="dpad-up">↑</button>
+            <button id="dpad-empty2"></button>
+            <button id="dpad-left">←</button>
+            <button id="dpad-center"></button>
+            <button id="dpad-right">→</button>
+            <button id="dpad-empty3"></button>
+            <button id="dpad-down">↓</button>
+            <button id="dpad-empty4"></button>
+        </div>
+        <div class="action-buttons">
+            <button id="btn-space">Drop</button>
+            <div class="small-buttons">
+                <button id="btn-start">Start</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Game scripts - without modules -->
+    <script src="js/constants-nomodule.js"></script>
+    <script src="js/piece-nomodule.js"></script>
+    <script src="js/renderer-nomodule.js"></script>
+    <script src="js/gravity-nomodule.js"></script>
+    <script src="js/breaker-nomodule.js"></script>
+    <script src="js/main-nomodule.js"></script>
+    
+    <!-- Add this button right before closing body tag -->
+    <button id="toggle-controls">Toggle Mobile Controls</button>
+</body>
+</html>
